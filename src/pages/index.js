@@ -32,7 +32,7 @@ const IndexPage = () => {
   return (
     <Layout className="container">
       {artGroups.allContentfulArtGroups.edges.map(edge => (
-        <h1 className="text-salmon">{edge.node.title}</h1>
+        <h1 className="text-salmon font-serif">{edge.node.title}</h1>
       ))}
       
     </Layout>

@@ -7,7 +7,9 @@ module.exports = {
       teal: '#4a949d',
       grayDark: '#78736f',
       grayLight: '#eeeeee',
-
+    },
+    fontFamily: {
+      serif: ['EB Garamond', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times, serif'],
     },
     extend: {},
   },
