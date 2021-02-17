@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: "kellypacker.com",
@@ -6,10 +8,12 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "OcpUWw68vuomibmHZnCS24CgwlikdK0-V6Pl7sEyuOc",
-        spaceId: "uoo8xrj2ps6p",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        // host: `preview.contentful.com`,
       },
     },
+    `gatsby-plugin-postcss`,
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
