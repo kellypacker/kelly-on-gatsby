@@ -13,6 +13,11 @@ const Navigation = ({}) => (
                     <Link to="/artwork">Artwork</Link>
                 </li>
                 <li>
+                    <Link to="https://www.etsy.com/shop/kellypacker/">
+                        Store
+                    </Link>
+                </li>
+                <li>
                     <Link to="/web-development">Web Development</Link>
                 </li>
                 <li>

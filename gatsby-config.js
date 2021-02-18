@@ -13,6 +13,7 @@ module.exports = {
                 // host: `preview.contentful.com`,
             },
         },
+        `gatsby-plugin-fontawesome-css`,
         `gatsby-plugin-postcss`,
         'gatsby-plugin-styled-components',
         'gatsby-plugin-sharp',

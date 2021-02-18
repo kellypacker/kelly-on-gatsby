@@ -9,6 +9,10 @@ nav a:hover {
     @apply bg-gray-lighter;
 }
 
+footer a {
+    @apply pr-3 text-lg;
+}
+
 
 @tailwind utilities;
 
