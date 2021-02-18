@@ -1,4 +1,26 @@
 @tailwind base;
 @tailwind components;
 
+nav a {
+    @apply text-gray-dark pt-1 pb-1 px-2 ml-3 text-lg;
+}
+
+nav a:hover {
+    @apply bg-gray-lighter;
+}
+
+
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-serif;
+        @apply text-gray-dark;
+    }
+    a {
+        @apply text-salmon;
+    }
+    a:hover {
+        @apply text-teal;
+    }
+}
