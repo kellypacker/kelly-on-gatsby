@@ -21,10 +21,16 @@ footer a {
         @apply font-serif;
         @apply text-gray-dark;
     }
+    h2 {
+        @apply text-2xl leading-7;
+    }
     a {
         @apply text-salmon;
     }
     a:hover {
         @apply text-teal;
+    }
+    p {
+        @apply text-lg leading-p;
     }
 }
