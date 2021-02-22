@@ -18,6 +18,8 @@ module.exports = {
         'gatsby-plugin-styled-components',
         'gatsby-plugin-sharp',
         'gatsby-plugin-react-helmet',
+        'gatsby-plugin-image',
+        'gatsby-plugin-sharp',
         'gatsby-plugin-sitemap',
         'gatsby-transformer-sharp',
         {

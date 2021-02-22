@@ -1,18 +1,41 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import { graphql, useStaticQuery } from 'gatsby';
+import * as React from 'react';
 import Layout from '../components/layout';
 
 const ArtworkPage = () => {
-    console.log('artwork');
+    const artGroups = useStaticQuery(graphql`
+        query {
+            allContentfulArtGroups {
+                edges {
+                    node {
+                        title
+                        artistStatement {
+                            raw
+                        }
+                        description {
+                            raw
+                        }
+                        image {
+                            file {
+                                url
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    if (!artGroups.allContentfulArtGroups.edges) return null;
+    console.log(artGroups.allContentfulArtGroups.edges);
+
     return (
-        <Layout className="container">
-            <h1 className="text-salmon font-serif">Artwork</h1>
-        </Layout>
+        <>
+            {artGroups.allContentfulArtGroups.edges.map((edge) => (
+                <h1 className="text-salmon font-serif">{edge.node.title}</h1>
+            ))}
+        </>
     );
 };
-
-// ArtworkPage.propTypes = {
-//     prop: PropTypes.
-// };
 
 export default ArtworkPage;
