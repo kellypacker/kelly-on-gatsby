@@ -12,6 +12,7 @@ module.exports = {
         },
         fontFamily: {
             serif: [
+                'Cormorant Garamond',
                 'EB Garamond',
                 'ui-serif',
                 'Georgia',
@@ -34,7 +35,7 @@ module.exports = {
         },
         extend: {
             lineHeight: {
-                p: '1.4',
+                p: '1.3',
             },
         },
     },

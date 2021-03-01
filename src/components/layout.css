@@ -2,7 +2,7 @@
 @tailwind components;
 
 nav a {
-    @apply text-gray-dark pt-1 pb-1 px-2 ml-3 text-lg;
+    @apply text-gray-dark pt-1 pr-0 mx-3 text-lg border-b border-salmon;
 }
 
 nav a:hover {
@@ -31,6 +31,6 @@ footer a {
         @apply text-teal;
     }
     p {
-        @apply text-lg leading-p;
+        @apply text-lg leading-p pb-2;
     }
 }

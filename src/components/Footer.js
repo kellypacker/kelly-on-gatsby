@@ -15,44 +15,44 @@ const Footer = () => {
         <footer className="flex flex-col md:flex-row md:justify-between items-baseline border-t border-gray-md py-3">
             <ul className="flex items-start">
                 <li>
-                    <Link
-                        to="https://www.etsy.com/shop/kellypacker/"
+                    <a
+                        href="https://www.etsy.com/shop/kellypacker/"
                         className="text-xl"
                     >
                         Etsy Shop
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link
-                        to="http://instagram.com/kellypacker"
+                    <a
+                        href="http://instagram.com/kellypacker"
                         className="text-2xl"
                     >
                         <FontAwesomeIcon icon={faInstagram} />
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link
-                        to="http://twitter.com/kellypacker"
+                    <a
+                        href="http://twitter.com/kellypacker"
                         className="text-2xl"
                     >
                         <FontAwesomeIcon icon={faTwitter} />
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link
-                        to="https://github.com/kellypacker"
+                    <a
+                        href="https://github.com/kellypacker"
                         className="text-2xl"
                     >
                         <FontAwesomeIcon icon={faGithub} />
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link
-                        to="https://www.linkedin.com/in/kellypacker/"
+                    <a
+                        href="https://www.linkedin.com/in/kellypacker/"
                         className="text-2xl"
                     >
                         <FontAwesomeIcon icon={faLinkedin} />
-                    </Link>
+                    </a>
                 </li>
             </ul>
             <p className="mt-2 md:mt-0">

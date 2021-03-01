@@ -3,7 +3,7 @@ import './layout.css';
 import Navigation from './Navigation';
 // https://fonts.google.com/specimen/EB+Garamond?query=garamond&preview.text_type=custom#standard-styles
 // https://github.com/fontsource/fontsource
-import '@fontsource/eb-garamond'; // Defaults to weight 400 with all styles included.
+import '@fontsource/cormorant-garamond'; // Defaults to weight 400 with all styles included.
 import Footer from './Footer';
 
 export default function Layout({ children }) {
