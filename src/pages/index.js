@@ -13,53 +13,49 @@ const ContainerStyled = styled.div`
     grid-gap: 1rem 2rem;
 `;
 
-const IndexPage = () => {
-    const posts = useStaticQuery(graphql`
-        query BlogPosts {
-            allContentfulBlog {
-                edges {
-                    node {
-                        title
-                        description {
-                            internal {
-                                content
-                            }
-                        }
-                        # image {
-                        #     gatsbyImageData(layout: FULL_WIDTH)
-                        # }
-                        image {
-                            fluid(maxWidth: 600, quality: 90) {
-                                # srcSet
-                                ...GatsbyContentfulFluid
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `);
-
-    if (!posts.allContentfulBlog.edges) return null;
-    console.log(posts.allContentfulBlog.edges);
+const IndexPage = ({ data }) => {
+    const posts = data.allContentfulBlog.nodes;
+    console.log({ data });
+    if (!posts) return null;
+    console.log(posts);
 
     return (
         <ContainerStyled>
-            {posts.allContentfulBlog.edges.map((edge) => {
-                const image = getImage(edge.node.image);
-                console.log(edge.node.image.fluid);
+            {posts.map((post) => {
+                console.log(post.image.fluid);
                 return (
-                    <div className="pt-4 pb-8">
-                        <h2 className="mb-2 mt-4">{edge.node.title}</h2>
+                    <div className="pt-4 pb-8" key={post.id}>
+                        <h2 className="mb-2 mt-4">{post.title}</h2>
                         <ReactMarkdown className="mb-4">
-                            {edge.node.description.internal.content}
+                            {post.description.internal.content}
                         </ReactMarkdown>
-                        <Img fluid={edge.node.image.fluid} alt="Test" />
+                        <Img fluid={post.image.fluid} alt="Test" />
                     </div>
                 );
             })}
         </ContainerStyled>
     );
 };
+
+export const query = graphql`
+    query BlogPosts {
+        allContentfulBlog {
+            nodes {
+                id
+                title
+                description {
+                    internal {
+                        content
+                    }
+                }
+                image {
+                    fluid(maxWidth: 600, quality: 90) {
+                        ...GatsbyContentfulFluid
+                    }
+                }
+            }
+        }
+    }
+`;
 
 export default IndexPage;
