@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
@@ -7,7 +7,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 const ArtworkContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(300px, 600px));
     grid-gap: 1rem 2rem;
     border-bottom: 1px solid #dbd9d8;
     :last-of-type {
@@ -20,41 +20,49 @@ const ImgContainer = styled.div`
     padding: 3px;
 `;
 
-const ArtGroup = ({ artgroup }) => (
-    <ArtworkContainerStyled className="py-5">
-        <div>
-            <ImgContainer>
-                <Img
-                    className="artgroup-img"
-                    fluid={artgroup.image.fluid}
-                    alt={artgroup.title}
-                />
-            </ImgContainer>
-        </div>
-        <div className="">
-            <h2 className="text-salmon font-serif text-2xl font-bold pb-2">
-                {artgroup.title}
-            </h2>
-            {artgroup.description &&
-                documentToReactComponents(JSON.parse(artgroup.description.raw))}
-            {artgroup.artistStatement && (
-                <>
-                    <h3 className="uppercase text-lg pt-3 font-bold pb-2">
-                        Statement
-                    </h3>
-                    {documentToReactComponents(
-                        JSON.parse(artgroup.artistStatement.raw)
+const ArtGroup = ({ artGroup }) => {
+    console.log(artGroup);
+    return (
+        <ArtworkContainerStyled className="py-5">
+            <div>
+                <Link to={`/artwork/series/${artGroup.slug}`}>
+                    <ImgContainer>
+                        <Img
+                            className="artgroup-img"
+                            fluid={artGroup.image.fluid}
+                            alt={artGroup.title}
+                        />
+                    </ImgContainer>
+                </Link>
+            </div>
+            <div className="">
+                <h2 className="text-salmon font-serif text-2xl font-bold pb-2">
+                    <Link to={`/artwork/series/${artGroup.slug}`}>
+                        {artGroup.title}
+                    </Link>
+                </h2>
+                {artGroup.description &&
+                    documentToReactComponents(
+                        JSON.parse(artGroup.description.raw)
                     )}
-                </>
-            )}
-        </div>
-    </ArtworkContainerStyled>
-);
+                {artGroup.artistStatement && (
+                    <>
+                        <h3 className="uppercase text-lg pt-3 font-bold pb-2">
+                            Statement
+                        </h3>
+                        {documentToReactComponents(
+                            JSON.parse(artGroup.artistStatement.raw)
+                        )}
+                    </>
+                )}
+            </div>
+        </ArtworkContainerStyled>
+    );
+};
 
 const ArtworkPage = ({ data }) => {
-    const artGroups = data?.allContentfulArtGroups?.nodes;
+    const artGroups = data?.artGroups?.nodes;
     if (!artGroups) return null;
-    console.log(artGroups);
 
     return (
         <>
@@ -63,7 +71,7 @@ const ArtworkPage = ({ data }) => {
             </h1>
 
             {artGroups.map((group) => (
-                <ArtGroup artgroup={group} key={group.id} />
+                <ArtGroup artGroup={group} key={group.id} />
             ))}
         </>
     );
@@ -71,8 +79,11 @@ const ArtworkPage = ({ data }) => {
 
 export const query = graphql`
     query {
-        allContentfulArtGroups(sort: { fields: publishedAt, order: DESC }) {
+        artGroups: allContentfulArtGroups(
+            sort: { fields: publishedAt, order: DESC }
+        ) {
             nodes {
+                slug
                 description {
                     raw
                 }

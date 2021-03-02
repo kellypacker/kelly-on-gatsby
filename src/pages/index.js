@@ -14,7 +14,7 @@ const ContainerStyled = styled.div`
 `;
 
 const IndexPage = ({ data }) => {
-    const posts = data.allContentfulBlog.nodes;
+    const posts = data.posts.nodes;
     console.log({ data });
     if (!posts) return null;
     console.log(posts);
@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
     query BlogPosts {
-        allContentfulBlog {
+        posts: allContentfulBlog {
             nodes {
                 id
                 title
