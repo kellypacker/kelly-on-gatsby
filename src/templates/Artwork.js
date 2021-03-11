@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const ContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 700px auto;
+    grid-template-columns: 70% auto;
     /* grid-template-columns: repeat(auto-fill, minmax(900px, 1fr)); */
     grid-gap: 2rem 2rem;
     border-bottom: 1px solid #dbd9d8;
@@ -44,23 +44,27 @@ const Artwork = ({ data }) => {
                     </Link>
                 </div>
             </div>
-            <ContainerStyled>
-                <div>
+
+            <div className="flex flex-col md:flex-row pb-6">
+                <div className="w-full md:w-2/3">
                     <Img
                         className="artgroup-img"
                         fluid={artwork.image.fluid}
                         alt={artwork.title}
                     />
                 </div>
-                <div>
-                    <h1 className="text-lg mb-3 font-bold">{artwork.title}</h1>
+
+                <div className="w-full md:w-1/3 pl-0 md:pl-6">
+                    <h1 className="text-lg mb-3 font-bold pt-3 md:pt-0">
+                        {artwork.title}
+                    </h1>
                     <p className="pb-0">
                         {artwork.height} x {artwork.width}"
                     </p>
                     <p className="pb-0">{artwork.medium.name}</p>
                     <p className="pb-0">{artwork.year}</p>
                 </div>
-            </ContainerStyled>
+            </div>
         </>
     );
 };
