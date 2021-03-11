@@ -6,9 +6,10 @@ import styled from 'styled-components';
 
 const ContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
-    grid-gap: 1rem 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2rem 2rem;
     border-bottom: 1px solid #dbd9d8;
+    margin-bottom: 40px;
     :last-of-type {
         border-bottom: none;
     }
@@ -16,8 +17,8 @@ const ContainerStyled = styled.div`
 
 const ArtGroup = ({ data }) => {
     console.log(data);
-    const { artGroup, artworks } = data;
-    console.log(artGroup);
+    const { artGroup } = data;
+    const { artworks } = data.artworks.nodes[0];
     return (
         <>
             <h1 className="text-3xl mt-4 mb-2 font-bold">
@@ -25,7 +26,7 @@ const ArtGroup = ({ data }) => {
                 {artGroup.title}
             </h1>
             <ContainerStyled>
-                {artworks.nodes.map((artwork) => (
+                {artworks.map((artwork) => (
                     <div key={artwork.id}>
                         <Link
                             to={`/artwork/series/${artGroup.slug}/${artwork.slug}`}
@@ -57,16 +58,18 @@ export const query = graphql`
             title
             slug
         }
-        artworks: allContentfulArtwork(
+        artworks: allContentfulArtworkOrder(
             filter: { artGroup: { slug: { eq: $slug } } }
         ) {
             nodes {
-                id
-                slug
-                title
-                image {
-                    fluid(maxWidth: 600, quality: 90) {
-                        ...GatsbyContentfulFluid
+                artworks {
+                    id
+                    slug
+                    title
+                    image {
+                        fluid(maxWidth: 300, quality: 90) {
+                            ...GatsbyContentfulFluid
+                        }
                     }
                 }
             }
