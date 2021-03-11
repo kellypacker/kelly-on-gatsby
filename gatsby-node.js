@@ -12,9 +12,7 @@ const turnArtGroupsIntoPages = async ({ graphql, actions }) => {
             }
         }
     `);
-    console.log(data);
     data.artGroups.nodes.forEach((artGroup) => {
-        console.log(artGroup.slug);
         actions.createPage({
             path: `artwork/series/${artGroup.slug}`,
             component: artGroupTemplate,
@@ -25,6 +23,32 @@ const turnArtGroupsIntoPages = async ({ graphql, actions }) => {
     });
 };
 
+const turnArtworksIntoPages = async ({ graphql, actions }) => {
+    const artworkTemplate = path.resolve('./src/templates/Artwork.js');
+    const { data } = await graphql(`
+        query {
+            artworks: allContentfulArtwork {
+                nodes {
+                    slug
+                    id
+                }
+            }
+        }
+    `);
+    data.artworks.nodes.forEach((artwork) => {
+        actions.createPage({
+            path: `artwork/${artwork.slug}`,
+            component: artworkTemplate,
+            context: {
+                slug: artwork.slug,
+            },
+        });
+    });
+};
+
 exports.createPages = async (params) => {
-    await turnArtGroupsIntoPages(params);
+    await Promise.all([
+        turnArtGroupsIntoPages(params),
+        turnArtworksIntoPages(params),
+    ]);
 };

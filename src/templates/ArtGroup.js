@@ -28,9 +28,7 @@ const ArtGroup = ({ data }) => {
             <ContainerStyled>
                 {artworks.map((artwork) => (
                     <div key={artwork.id}>
-                        <Link
-                            to={`/artwork/series/${artGroup.slug}/${artwork.slug}`}
-                        >
+                        <Link to={`/artwork/${artwork.slug}`}>
                             <Img
                                 fluid={artwork.image.fluid}
                                 alt={artwork.title}
