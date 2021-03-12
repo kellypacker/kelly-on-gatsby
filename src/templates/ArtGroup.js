@@ -21,7 +21,7 @@ const ArtGroup = ({ data }) => {
     const { artworks } = data.artworks.nodes[0];
     return (
         <>
-            <h1 className="text-3xl mt-4 mb-2 font-bold">
+            <h1 className="text-3xl mt-4 mb-2">
                 <span className="uppercase text-lg font-normal">Series:</span>{' '}
                 {artGroup.title}
             </h1>
