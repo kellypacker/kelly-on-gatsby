@@ -15,24 +15,19 @@ const ContainerStyled = styled.div`
 
 const IndexPage = ({ data }) => {
     const posts = data.posts.nodes;
-    console.log({ data });
     if (!posts) return null;
-    console.log(posts);
 
     return (
         <ContainerStyled>
-            {posts.map((post) => {
-                console.log(post.image.fluid);
-                return (
-                    <div className="pt-4 pb-8" key={post.id}>
-                        <h2 className="mb-2 mt-4">{post.title}</h2>
-                        <ReactMarkdown className="mb-4">
-                            {post.description.internal.content}
-                        </ReactMarkdown>
-                        <Img fluid={post.image.fluid} alt="Test" />
-                    </div>
-                );
-            })}
+            {posts.map((post) => (
+                <div className="pt-4 pb-8" key={post.id}>
+                    <h2 className="mb-2 mt-4">{post.title}</h2>
+                    <ReactMarkdown className="mb-4">
+                        {post.description.internal.content}
+                    </ReactMarkdown>
+                    <Img fluid={post.image.fluid} alt="Test" />
+                </div>
+            ))}
         </ContainerStyled>
     );
 };

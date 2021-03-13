@@ -1,0 +1,15 @@
+.artwork-header {
+    flex-flow: row wrap;
+    & > * {
+        flex: 1 100%;
+        &[disabled] {
+            pointer-events: none;
+            opacity: 0.3;
+        }
+    }
+    .pagination {
+        a:hover {
+            background-color: #f3f3f3;
+        }
+    }
+}

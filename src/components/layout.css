@@ -9,6 +9,8 @@ nav a:hover {
     @apply bg-gray-lighter;
 }
 
+/* @import './css/artwork.css'; */
+
 footer a {
     @apply pr-3 text-lg;
 }

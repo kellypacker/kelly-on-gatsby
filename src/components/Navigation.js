@@ -49,7 +49,7 @@ const StoreBgStyled = styled.span`
 
 const Navigation = ({}) => (
     <div className="flex justify-between items-center border-b border-gray-md pb-2 pt-6">
-        <Link to="/" className="text-3xl ml-1">
+        <Link to="/" className="text-3xl ml-1" style={{ lineHeight: 1.2 }}>
             Kelly Packer
         </Link>
         <nav>
