@@ -31,6 +31,9 @@ const turnArtworksIntoPages = async ({ graphql, actions }) => {
                 nodes {
                     slug
                     id
+                    artGroup {
+                        slug
+                    }
                 }
             }
         }
@@ -41,6 +44,7 @@ const turnArtworksIntoPages = async ({ graphql, actions }) => {
             component: artworkTemplate,
             context: {
                 slug: artwork.slug,
+                artGroupSlug: artwork.artGroup.slug,
             },
         });
     });

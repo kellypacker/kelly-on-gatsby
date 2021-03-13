@@ -4,15 +4,15 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 
-const ContainerStyled = styled.div`
-    display: grid;
-    grid-template-columns: 70% auto;
-    /* grid-template-columns: repeat(auto-fill, minmax(900px, 1fr)); */
-    grid-gap: 2rem 2rem;
-    border-bottom: 1px solid #dbd9d8;
-    margin-bottom: 40px;
-    :last-of-type {
-        border-bottom: none;
+const PaginationStyles = styled.div`
+    a:hover {
+        background-color: #f3f3f3;
+    }
+    & > * {
+        &[disabled] {
+            pointer-events: none;
+            opacity: 0.3;
+        }
     }
 `;
 
@@ -20,16 +20,35 @@ const Artwork = ({ data }) => {
     console.log(data);
     const { artwork } = data;
     console.log(artwork);
+
+    const { artworks } = data.artworks.nodes[0];
+
+    const currentIndex = artworks.findIndex((a) => a.id === artwork.id);
+    console.log(currentIndex);
+
+    const prevArtwork = artworks[currentIndex - 1];
+    const nextArtwork = artworks[currentIndex + 1];
+
+    console.log(prevArtwork, nextArtwork, artworks.length, currentIndex);
+
     return (
         <>
             <div className="flex justify-between items-baseline">
-                <h2 className="text-3xl mt-4 mb-5 font-bold">
+                <h2 className="text-3xl mt-4 mb-5">
                     <span className="uppercase text-lg font-normal">
                         Series:
                     </span>{' '}
                     {artwork.artGroup.title}
                 </h2>
-                <div>
+                <PaginationStyles>
+                    <Link
+                        title="Prev Page"
+                        disabled={!prevArtwork}
+                        className="text-lg border border-gray-md py-1 px-2 mr-3"
+                        to={prevArtwork ? `/artwork/${prevArtwork.slug}` : ''}
+                    >
+                        {'<-'} Prev
+                    </Link>
                     <Link
                         className="text-lg border border-gray-md py-1 px-2"
                         to={`/artwork/series/${artwork.artGroup.slug}`}
@@ -37,12 +56,14 @@ const Artwork = ({ data }) => {
                         - All Artwork in Series -
                     </Link>
                     <Link
+                        title="Next Page"
+                        disabled={!nextArtwork}
                         className="text-lg border border-gray-md py-1 px-2 ml-3"
-                        to={`/artwork/series/${artwork.artGroup.slug}`}
+                        to={nextArtwork ? `/artwork/${nextArtwork.slug}` : ''}
                     >
-                        Next
+                        Next ->
                     </Link>
-                </div>
+                </PaginationStyles>
             </div>
 
             <div className="flex flex-col md:flex-row pb-6">
@@ -55,7 +76,7 @@ const Artwork = ({ data }) => {
                 </div>
 
                 <div className="w-full md:w-1/3 pl-0 md:pl-6">
-                    <h1 className="text-lg mb-3 font-bold pt-3 md:pt-0">
+                    <h1 className="text-xl mb-3 pt-3 md:pt-0">
                         {artwork.title}
                     </h1>
                     <p className="pb-0">
@@ -76,7 +97,17 @@ const Artwork = ({ data }) => {
 export default Artwork;
 
 export const query = graphql`
-    query($slug: String!) {
+    query($slug: String!, $artGroupSlug: String!) {
+        artworks: allContentfulArtworkOrder(
+            filter: { artGroup: { slug: { eq: $artGroupSlug } } }
+        ) {
+            nodes {
+                artworks {
+                    id
+                    slug
+                }
+            }
+        }
         artwork: contentfulArtwork(slug: { eq: $slug }) {
             id
             slug
