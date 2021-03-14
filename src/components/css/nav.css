@@ -27,6 +27,9 @@ nav ul {
     align-items: center;
     flex-direction: column;
 }
+nav ul li {
+    @apply mx-1;
+}
 
 nav a {
     @apply text-gray-dark pt-1 pr-0 mx-3 text-lg border-b border-salmon;
@@ -37,9 +40,6 @@ nav a:hover {
 nav a:last-child {
     @apply mr-0;
 }
-
-
-
 @media screen and (min-width: 768px) {
     nav {
         position: relative;    

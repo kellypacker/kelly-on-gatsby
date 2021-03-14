@@ -6,6 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useScreenMinMd } from '../hooks/useResponsive';
 
+const NavStyled = styled.nav`
+    a[aria-current='page'] {
+        color: #78736f;
+        border-bottom: 1px solid #f98b7e;
+        background-color: #f3f3f3;
+        span {
+            border-right: 15px solid rgba(214, 188, 63, 0.2);
+        }
+    }
+`;
+
 const ArtworkBgStyled = styled.span`
     /* background-color: #d6bc3f; */
     display: inline-block;
@@ -57,7 +68,6 @@ const Navigation = ({}) => {
     const handleMobileNavToggle = () => {
         setIsMobileNavOpen(!isMobileNavOpen);
     };
-    console.log({ isMobileNavOpen, isTablet });
     return (
         <>
             {!isTablet && (
@@ -99,7 +109,7 @@ const Navigation = ({}) => {
                         display: isMobileNavOpen || isTablet ? 'block' : 'none',
                     }}
                 >
-                    <nav>
+                    <NavStyled>
                         <ul>
                             <li>
                                 <Link to="/artwork">
@@ -129,7 +139,7 @@ const Navigation = ({}) => {
                                 </Link>
                             </li>
                         </ul>
-                    </nav>
+                    </NavStyled>
                 </div>
             </div>
         </>
