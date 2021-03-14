@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useScreenMinMd } from '../hooks/useResponsive';
 
 const ArtworkBgStyled = styled.span`
     /* background-color: #d6bc3f; */
@@ -47,41 +50,90 @@ const StoreBgStyled = styled.span`
     }
 `;
 
-const Navigation = ({}) => (
-    <div className="flex justify-between items-center border-b border-gray-md pb-2 pt-6">
-        <Link to="/" className="text-3xl ml-1" style={{ lineHeight: 1.2 }}>
-            Kelly Packer
-        </Link>
-        <nav>
-            <ul className="flex">
-                <li>
-                    <Link to="/artwork">
+const Navigation = ({}) => {
+    const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+    const isTablet = useScreenMinMd();
+
+    const handleMobileNavToggle = () => {
+        setIsMobileNavOpen(!isMobileNavOpen);
+    };
+    console.log({ isMobileNavOpen, isTablet });
+    return (
+        <>
+            {!isTablet && (
+                <div className="relative main-nav-mobile">
+                    <Link className="main-nav-mobile__artwork" to="/artwork">
                         <ArtworkBgStyled>Artwork</ArtworkBgStyled>
                     </Link>
-                </li>
-                <li>
-                    <a href="https://www.etsy.com/shop/kellypacker/">
-                        <ArtworkBgStyled>Store</ArtworkBgStyled>
-                    </a>
-                </li>
-                <li>
-                    <Link to="/web-development">
-                        <ArtworkBgStyled>Web Development</ArtworkBgStyled>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/profile">
-                        <ArtworkBgStyled>Profile</ArtworkBgStyled>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/contact">
-                        <ArtworkBgStyled>Contact</ArtworkBgStyled>
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    </div>
-);
+                    {isMobileNavOpen && (
+                        <button
+                            type="button"
+                            onClick={handleMobileNavToggle}
+                            className="text-lg md:hidden"
+                        >
+                            Close
+                        </button>
+                    )}
+                    {!isMobileNavOpen && (
+                        <button
+                            type="button"
+                            onClick={handleMobileNavToggle}
+                            className="text-lg md:hidden"
+                        >
+                            More
+                        </button>
+                    )}
+                </div>
+            )}
+            <div className="main-header flex justify-between items-center border-b border-gray-md pb-2 pt-6">
+                <Link
+                    to="/"
+                    className="text-3xl ml-1"
+                    style={{ lineHeight: 1.2 }}
+                >
+                    Kelly Packer
+                </Link>
+
+                <div
+                    style={{
+                        display: isMobileNavOpen || isTablet ? 'block' : 'none',
+                    }}
+                >
+                    <nav>
+                        <ul>
+                            <li>
+                                <Link to="/artwork">
+                                    <ArtworkBgStyled>Artwork</ArtworkBgStyled>
+                                </Link>
+                            </li>
+                            <li>
+                                <a href="https://www.etsy.com/shop/kellypacker/">
+                                    <ArtworkBgStyled>Store</ArtworkBgStyled>
+                                </a>
+                            </li>
+                            <li>
+                                <Link to="/web-development">
+                                    <ArtworkBgStyled>
+                                        Web Development
+                                    </ArtworkBgStyled>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/profile">
+                                    <ArtworkBgStyled>Profile</ArtworkBgStyled>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/contact">
+                                    <ArtworkBgStyled>Contact</ArtworkBgStyled>
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </>
+    );
+};
 
 export default Navigation;

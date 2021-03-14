@@ -1,0 +1,52 @@
+.main-nav-mobile button {
+    position: absolute;
+    top: 35px;
+    right: 5px;
+}
+.main-nav-mobile__artwork {
+    position: absolute;
+    top: 35px;
+    right: 60px;
+}
+
+nav {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: #fff;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+nav a {
+    @apply text-gray-dark pt-1 pr-0 mx-3 text-lg border-b border-salmon;
+}
+nav a:hover {
+    @apply bg-gray-lighter;
+}
+nav a:last-child {
+    @apply mr-0;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    nav {
+        position: relative;    
+        width: auto;
+        height: auto;    
+    }
+    nav ul {
+        flex-direction: row;
+    }
+}

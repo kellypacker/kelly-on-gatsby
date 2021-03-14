@@ -4,14 +4,18 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { mediaQueries } from '../helpers/media-queries';
 
 const ArtworkContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: repeat(2, minmax(300px, 600px));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 600px));
     grid-gap: 1rem 2rem;
     border-bottom: 1px solid #dbd9d8;
     :last-of-type {
         border-bottom: none;
+    }
+    @media ${mediaQueries.md} {
+        grid-template-columns: repeat(2, minmax(300px, 600px));
     }
 `;
 
@@ -21,7 +25,7 @@ const ImgContainer = styled.div`
 `;
 
 const ArtGroup = ({ artGroup }) => {
-    console.log(artGroup);
+    console.log('');
     return (
         <ArtworkContainerStyled className="py-5">
             <div>
