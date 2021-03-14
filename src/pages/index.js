@@ -5,6 +5,7 @@ import Img from 'gatsby-image';
 
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
+import SEO from '../components/SEO';
 // import { GatsbyImage } from 'gatsby-plugin-image/compat';
 
 const ContainerStyled = styled.div`
@@ -19,6 +20,7 @@ const IndexPage = ({ data }) => {
 
     return (
         <ContainerStyled>
+            <SEO title="Home" />
             {posts.map((post) => (
                 <div className="pt-4 pb-8" key={post.id}>
                     <h2 className="mb-2 mt-4">{post.title}</h2>

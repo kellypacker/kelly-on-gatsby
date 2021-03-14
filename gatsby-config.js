@@ -2,7 +2,9 @@ require('dotenv').config();
 
 module.exports = {
     siteMetadata: {
-        title: 'kellypacker.com',
+        title: 'Kelly Packer - Artist & Web Developer',
+        description:
+            'Kelly Packer is an artist and web developer. Features a portfolio of her contemporary abstract artwork. Includes web development projects.',
     },
     plugins: [
         {

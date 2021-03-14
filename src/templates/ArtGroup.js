@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import SEO from '../components/SEO';
 
 const ContainerStyled = styled.div`
     display: grid;
@@ -21,6 +22,10 @@ const ArtGroup = ({ data }) => {
     const { artworks } = data.artworks.nodes[0];
     return (
         <>
+            <SEO
+                title={`Series: ${artGroup.title}`}
+                description={`Artwork for the series: ${artGroup.title}`}
+            />
             <h1 className="text-3xl mt-4 mb-2">
                 <span className="uppercase text-lg font-normal">Series:</span>{' '}
                 {artGroup.title}

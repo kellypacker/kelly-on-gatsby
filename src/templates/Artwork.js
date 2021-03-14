@@ -3,7 +3,9 @@ import { PropTypes } from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { mediaQueries } from '../helpers/media-queries';
+import SEO from '../components/SEO';
 
 const HeaderStyles = styled.div`
     flex-flow: row wrap;
@@ -36,6 +38,10 @@ const Artwork = ({ data }) => {
 
     return (
         <>
+            <SEO
+                title={`${artwork.title}`}
+                description={`Artwork: ${artwork.title} ${artwork.medium.name} ${artwork.year}`}
+            />
             <HeaderStyles
                 className="flex justify-between items-baseline flex-col md:flex-row mb-5"
                 style={{ flexFlow: 'row wrap' }}

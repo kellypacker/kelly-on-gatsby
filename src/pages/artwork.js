@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { mediaQueries } from '../helpers/media-queries';
+import SEO from '../components/SEO';
 
 const ArtworkContainerStyled = styled.div`
     display: grid;
@@ -70,6 +71,10 @@ const ArtworkPage = ({ data }) => {
 
     return (
         <>
+            <SEO
+                title="Artwork by Series"
+                description="Artwork by listed by series. Includes artist statements and images."
+            />
             <h1 className="text-3xl mt-4 uppercase">
                 Artwork <span className="italic lowercase">by</span> Series
             </h1>
