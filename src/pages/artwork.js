@@ -16,7 +16,8 @@ const ArtworkContainerStyled = styled.div`
         border-bottom: none;
     }
     @media ${mediaQueries.md} {
-        grid-template-columns: repeat(2, minmax(300px, 600px));
+        grid-template-columns: 300px minmax(auto, 700px);
+        /* grid-template-columns: repeat(2, minmax(200px, 300px)); */
     }
 `;
 
@@ -102,7 +103,7 @@ export const query = graphql`
                 title
                 id
                 image {
-                    fluid(maxWidth: 600, quality: 90) {
+                    fluid(maxWidth: 300, quality: 80) {
                         ...GatsbyContentfulFluid
                     }
                 }

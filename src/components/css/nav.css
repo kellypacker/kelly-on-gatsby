@@ -1,11 +1,11 @@
 .main-nav-mobile button {
     position: absolute;
-    top: 35px;
+    top: 30px;
     right: 5px;
 }
 .main-nav-mobile__artwork {
     position: absolute;
-    top: 35px;
+    top: 30px;
     right: 60px;
 }
 

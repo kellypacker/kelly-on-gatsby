@@ -13,7 +13,6 @@ export default function SEO({ children, location, description, title, image }) {
             }
         }
     `);
-    console.log(site);
     const metaDesc = description || site.siteMetadata.description;
     return (
         <Helmet titleTemplate={`%s - ${site.siteMetadata.title}`}>

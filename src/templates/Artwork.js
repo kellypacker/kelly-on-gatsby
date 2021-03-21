@@ -100,7 +100,7 @@ const Artwork = ({ data }) => {
                     </p>
                     <p className="pb-0">{artwork.medium.name}</p>
                     <p className="pb-0">{artwork.year}</p>
-                    {artwork.available && `$${artwork.price}`}
+                    {artwork.available && artwork.price && `$${artwork.price}`}
                     {artwork.available && (
                         <div>
                             <a
@@ -148,7 +148,7 @@ export const query = graphql`
             }
             year
             image {
-                fluid(maxWidth: 900, quality: 90) {
+                fluid(maxWidth: 900, quality: 80) {
                     ...GatsbyContentfulFluid
                 }
             }

@@ -70,7 +70,7 @@ export const query = graphql`
                     slug
                     title
                     image {
-                        fluid(maxWidth: 300, quality: 90) {
+                        fluid(maxWidth: 300, quality: 80) {
                             ...GatsbyContentfulFluid
                         }
                     }

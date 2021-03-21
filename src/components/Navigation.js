@@ -112,7 +112,10 @@ const Navigation = ({}) => {
                     <NavStyled>
                         <ul>
                             <li>
-                                <Link to="/artwork">
+                                <Link
+                                    to="/artwork"
+                                    onClick={handleMobileNavToggle}
+                                >
                                     <ArtworkBgStyled>Artwork</ArtworkBgStyled>
                                 </Link>
                             </li>
@@ -122,19 +125,28 @@ const Navigation = ({}) => {
                                 </a>
                             </li>
                             <li>
-                                <Link to="/web-development">
+                                <Link
+                                    to="/web-development"
+                                    onClick={handleMobileNavToggle}
+                                >
                                     <ArtworkBgStyled>
                                         Web Development
                                     </ArtworkBgStyled>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/profile">
+                                <Link
+                                    to="/profile"
+                                    onClick={handleMobileNavToggle}
+                                >
                                     <ArtworkBgStyled>Profile</ArtworkBgStyled>
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/contact">
+                                <Link
+                                    to="/contact"
+                                    onClick={handleMobileNavToggle}
+                                >
                                     <ArtworkBgStyled>Contact</ArtworkBgStyled>
                                 </Link>
                             </li>

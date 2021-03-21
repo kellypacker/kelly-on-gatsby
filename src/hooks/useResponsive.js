@@ -1,8 +1,6 @@
 import { useMediaQuery } from 'react-responsive';
 import { breakpointNumbers } from '../helpers/media-queries';
 
-console.log(breakpointNumbers);
-
 const { sm, md, lg, xl } = breakpointNumbers;
 
 export const useScreenXlOnly = () => useMediaQuery({ minWidth: xl });
