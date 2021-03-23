@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
 
 const ProfileStyled = styled.div`
