@@ -17,7 +17,6 @@ const ContainerStyled = styled.div`
 `;
 
 const ArtGroup = ({ data }) => {
-    console.log(data);
     const { artGroup } = data;
     const { artworks } = data.artworks.nodes[0];
     return (
@@ -30,7 +29,7 @@ const ArtGroup = ({ data }) => {
                 <span className="uppercase text-lg font-normal">Series:</span>{' '}
                 {artGroup.title}
             </h1>
-            <ContainerStyled>
+            <ContainerStyled className="pt-3">
                 {artworks.map((artwork) => (
                     <div key={artwork.id}>
                         <Link to={`/artwork/${artwork.slug}`}>

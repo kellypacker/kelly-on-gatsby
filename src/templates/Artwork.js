@@ -43,7 +43,7 @@ const Artwork = ({ data }) => {
                 description={`Artwork: ${artwork.title} ${artwork.medium.name} ${artwork.year}`}
             />
             <HeaderStyles
-                className="flex justify-between items-baseline flex-col md:flex-row mb-5"
+                className="flex justify-between items-baseline flex-col md:flex-row mb-4"
                 style={{ flexFlow: 'row wrap' }}
             >
                 <h2 className="text-xl md:text-3xl mt-4 mb-5 text-center md:text-left">
@@ -78,7 +78,7 @@ const Artwork = ({ data }) => {
                 </div>
             </HeaderStyles>
 
-            <div className="flex flex-col md:flex-row pb-6">
+            <div className="flex flex-col md:flex-row pb-8">
                 <div className="w-full md:w-2/3">
                     <Img
                         className="artgroup-img"
@@ -148,7 +148,7 @@ export const query = graphql`
             }
             year
             image {
-                fluid(maxWidth: 900, quality: 80) {
+                fluid(maxWidth: 900, quality: 75) {
                     ...GatsbyContentfulFluid
                 }
             }

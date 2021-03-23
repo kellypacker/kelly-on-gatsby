@@ -29,7 +29,7 @@ const ImgContainer = styled.div`
 const ArtGroup = ({ artGroup }) => {
     console.log('');
     return (
-        <ArtworkContainerStyled className="py-5">
+        <ArtworkContainerStyled className="py-8">
             <div>
                 <Link to={`/artwork/series/${artGroup.slug}`}>
                     <ImgContainer>

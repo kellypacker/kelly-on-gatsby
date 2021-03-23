@@ -3,6 +3,10 @@
 
 @import './css/nav.css';
 
+.cms-content h3 {
+    @apply text-2xl pt-4 pb-3;
+}
+
 footer a {
     @apply pr-3 text-lg;
 }
