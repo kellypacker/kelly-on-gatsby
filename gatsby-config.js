@@ -5,7 +5,7 @@ module.exports = {
         title: 'Kelly Packer - Artist & Web Developer',
         description:
             'Kelly Packer is an artist and web developer. Features a portfolio of her contemporary abstract artwork. Includes web development projects.',
-        // siteUrl: process.env.SITE_URL,
+        siteUrl: process.env.SITE_URL,
     },
     plugins: [
         {
