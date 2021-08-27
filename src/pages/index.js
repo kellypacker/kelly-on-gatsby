@@ -23,7 +23,9 @@ const IndexPage = ({ data }) => {
             <SEO title="Home" />
             {posts.map((post) => (
                 <div className="pt-4 pb-8" key={post.id}>
-                    <h2 className="mb-2 mt-4">{post.title}</h2>
+                    <h2 className="mb-2 mt-4 text-3xl leading-8">
+                        {post.title}
+                    </h2>
                     <ReactMarkdown className="mb-4">
                         {post.description.internal.content}
                     </ReactMarkdown>
@@ -36,7 +38,7 @@ const IndexPage = ({ data }) => {
 
 export const query = graphql`
     query BlogPosts {
-        posts: allContentfulBlog {
+        posts: allContentfulBlog(sort: { fields: date, order: DESC }) {
             nodes {
                 id
                 title
