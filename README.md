@@ -15,4 +15,4 @@ npm run build
 npm run server
 ```
 
-To deploy, simply push to `main`.
+To deploy, simply push to `master`.
