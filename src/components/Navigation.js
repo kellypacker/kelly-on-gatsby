@@ -121,16 +121,6 @@ const Navigation = ({}) => {
                             </li>
                             <li>
                                 <Link
-                                    to="/web-development"
-                                    onClick={handleMobileNavToggle}
-                                >
-                                    <ArtworkBgStyled>
-                                        Web Development
-                                    </ArtworkBgStyled>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
                                     to="/profile"
                                     onClick={handleMobileNavToggle}
                                 >
