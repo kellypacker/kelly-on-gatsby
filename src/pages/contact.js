@@ -19,22 +19,25 @@ const ContactPage = () => {
                     name="contact"
                     method="POST"
                     data-netlify="true"
+                    data-netlify-honeypot="bot-field"
                     className="mb-6"
                 >
+                    <input type="hidden" name="form-name" value="contact" />
                     <p>
                         <label>
-                            Name <input type="text" name="name" />
+                            Name <input type="text" name="name" required />
                         </label>
                     </p>
                     <p>
                         <label>
-                            Email <input type="email" name="email" />
+                            Email <input type="email" name="email" required />
                         </label>
                     </p>
 
                     <p>
                         <label>
-                            Message <textarea rows="10" name="message" />
+                            Message{' '}
+                            <textarea rows="10" name="message" required />
                         </label>
                     </p>
                     <p>
