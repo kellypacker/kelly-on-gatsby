@@ -3,6 +3,10 @@
 
 @import './css/nav.css';
 
+.cms-content--profile p:first-child {
+    @apply text-lg;
+}
+
 .cms-content h3 {
     @apply text-2xl pt-4 pb-3;
 }

@@ -37,7 +37,7 @@ const ContactPage = ({ data }) => {
                         />
                     </ImgContainer>
                 </div>
-                <div className="cms-content">
+                <div className="cms-content cms-content--profile">
                     {documentToReactComponents(JSON.parse(about.body.raw))}
                 </div>
             </ProfileStyled>
