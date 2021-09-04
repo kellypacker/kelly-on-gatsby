@@ -23,7 +23,7 @@ const ContactPage = ({ data }) => {
         <>
             <SEO
                 title="Profile"
-                description="Profile of Kelly Packer, artist and web developer. Includes influences and artist statement."
+                description="Profile of Kelly Packer, artist and web developer. Includes artist statement and background."
             />
             <h1 className="text-3xl mt-4 mb-2">
                 Artist <em>and</em> Web Developer

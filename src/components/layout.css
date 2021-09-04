@@ -4,7 +4,17 @@
 @import './css/nav.css';
 
 .cms-content--profile p:first-child {
-    @apply text-lg;
+    @apply text-2xl relative pb-6;
+}
+
+.cms-content--profile p:first-child:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    z-index: 10;
+    border-bottom: 3px dotted #97c9bd;
+    width: 75%
 }
 
 .cms-content h3 {
@@ -35,4 +45,38 @@ footer a {
     p {
         @apply text-lg leading-p pb-2;
     }
+    input, textarea {
+        @apply block border border-gray-md w-full mb-4 p-2 mt-1;
+    }
+    label {
+        @apply uppercase font-bold text-base;
+    }
+    button[type="submit"] {
+        @apply border-salmon pl-4 pr-6 py-2 uppercase border-b relative bg-gray-lighter;
+    }
+    button[type="submit"]:hover {
+        @apply bg-gray-light;
+    }
+    button[type="submit"]:after {
+            content: ' ';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            z-index: 10;
+            border-bottom: 3px dotted #97c9bd;
+            width: 75%
+    }
+    form { 
+        @apply relative pt-6;
+    }
+    form:before {
+        content: ' ';
+        position: absolute;
+        top: 8px;
+        left: 0;
+        z-index: 10;
+        border-top: 3px dotted #97c9bd;
+        width: 75%
+    }
+
 }
