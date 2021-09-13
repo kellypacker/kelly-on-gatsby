@@ -16,8 +16,8 @@
     },
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^14.1.2",
-        "@fontsource/cormorant-garamond": "^4.2.1",
-        "@fontsource/eb-garamond": "^4.2.1",
+        "@fontsource/cormorant-garamond": "^4.5.0",
+        "@fontsource/eb-garamond": "^4.5.0",
         "@fortawesome/fontawesome-svg-core": "^1.2.34",
         "@fortawesome/free-brands-svg-icons": "^5.15.2",
         "@fortawesome/free-regular-svg-icons": "^5.15.2",
