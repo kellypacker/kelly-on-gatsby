@@ -5,11 +5,16 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
+import { mediaQueries } from '../helpers/media-queries';
 
 const ProfileStyled = styled.div`
     display: grid;
-    grid-template-columns: 300px minmax(auto, 700px);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 600px));
     grid-gap: 2rem 2rem;
+    @media ${mediaQueries.md} { 
+        grid-template-columns: 300px minmax(auto, 700px);
+
+    }
 `;
 
 const ImgContainer = styled.div`
