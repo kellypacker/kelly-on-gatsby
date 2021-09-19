@@ -52,7 +52,7 @@
         "react-helmet": "^6.1.0",
         "react-markdown": "^5.0.3",
         "react-responsive": "^8.2.0",
-        "styled-components": "^5.2.1"
+        "styled-components": "^5.3.1"
     },
     "devDependencies": {
         "prettier": "^2.2.1",
