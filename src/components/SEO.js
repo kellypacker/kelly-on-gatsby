@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import favicon from '../images/favicon.ico';
 
 export default function SEO({ children, location, description, title, image }) {
     const { site } = useStaticQuery(graphql`
@@ -20,7 +21,7 @@ export default function SEO({ children, location, description, title, image }) {
             <title>{title}</title>
             {/* Fav Icons */}
             <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-            <link rel="alternate icon" href="/favicon.ico" />
+            <link rel="alternate icon" href={favicon} />
             {/* Meta Tags */}
             <meta
                 name="viewport"
