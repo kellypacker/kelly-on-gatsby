@@ -63,7 +63,8 @@ const Navigation = ({}) => {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
     const handleMobileNavToggle = () => {
-        document.body.style.overflow = isMobileNavOpen ? 'auto' : 'hidden';
+        const isDesktop = window.innerWidth > 768;
+        document.body.style.overflow = isMobileNavOpen || isDesktop ? 'auto' : 'hidden';
         setIsMobileNavOpen(!isMobileNavOpen);
     };
     return (
