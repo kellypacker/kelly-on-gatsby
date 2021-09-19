@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import './css/nav.css';
 
 const NavStyled = styled.nav`
     a[aria-current='page'] {

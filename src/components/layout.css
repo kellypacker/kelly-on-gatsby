@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 
-@import './css/nav.css';
-
 .cms-content--profile p:first-child {
     @apply text-2xl relative pb-6;
 }
@@ -24,7 +22,6 @@
 footer a {
     @apply pr-3 text-lg;
 }
-
 
 @tailwind utilities;
 
