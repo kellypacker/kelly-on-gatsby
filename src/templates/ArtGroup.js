@@ -37,7 +37,7 @@ const ArtGroup = ({ data }) => {
                                 fluid={artwork.image.fluid}
                                 alt={artwork.title}
                             />
-                            <h3 className="text-center py-2">
+                            <h3 className="text-center text-lg py-2">
                                 {artwork.title}
                             </h3>
                         </Link>
