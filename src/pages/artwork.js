@@ -27,7 +27,6 @@ const ImgContainer = styled.div`
 `;
 
 const ArtGroup = ({ artGroup }) => {
-    console.log('');
     return (
         <ArtworkContainerStyled className="py-8">
             <div>
