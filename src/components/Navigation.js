@@ -63,8 +63,8 @@ const Navigation = ({}) => {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
     const handleMobileNavToggle = () => {
+        document.body.style.overflow = isMobileNavOpen ? 'auto' : 'hidden';
         setIsMobileNavOpen(!isMobileNavOpen);
-        document.body.style.overflow = !isMobileNavOpen ? 'hidden' : 'auto';
     };
     return (
         <>
