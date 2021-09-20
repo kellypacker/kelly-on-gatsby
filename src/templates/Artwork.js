@@ -3,6 +3,8 @@ import { PropTypes } from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { mediaQueries } from '../helpers/media-queries';
 import SEO from '../components/SEO';
@@ -56,10 +58,11 @@ const Artwork = ({ data }) => {
                     <Link
                         title="Prev Page"
                         disabled={!prevArtwork}
-                        className="text-md md:text-lg border border-gray-md py-1 px-2 mr-3"
+                        className="text-md md:text-lg border border-gray-md py-1 pr-2 pl-1 mr-3"
                         to={prevArtwork ? `/artwork/${prevArtwork.slug}` : ''}
                     >
-                        {'<-'} Prev
+                        
+                        <ChevronLeftIcon className="h-4 w-4 inline"/> Prev
                     </Link>
                     <Link
                         className="text-md md:text-lg border border-gray-md py-1 px-2"
@@ -70,10 +73,10 @@ const Artwork = ({ data }) => {
                     <Link
                         title="Next Page"
                         disabled={!nextArtwork}
-                        className="text-md md:text-lg border border-gray-md py-1 px-2 ml-3"
+                        className="text-md md:text-lg border border-gray-md py-1 pl-2 pr-1 ml-3"
                         to={nextArtwork ? `/artwork/${nextArtwork.slug}` : ''}
                     >
-                        Next ->
+                        Next <ChevronRightIcon className="h-4 w-4 inline"/>
                     </Link>
                 </div>
             </HeaderStyles>

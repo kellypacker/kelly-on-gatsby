@@ -18,7 +18,7 @@ const NavStyled = styled.nav`
 const ArtworkBgStyled = styled.span`
     /* background-color: #d6bc3f; */
     display: inline-block;
-    padding: 3px 0;
+    padding: 0;
     border-bottom: 1px solid transparent;
     border-right: 15px solid transparent;
     border-left: 1px solid transparent;
@@ -27,14 +27,13 @@ const ArtworkBgStyled = styled.span`
     &:after {
         content: ' ';
         position: absolute;
-        top: 8px;
+        top: 0px;
         right: -9px;
         bottom: 5px;
         z-index: 10;
         border-left: 3px dotted #97c9bd;
     }
     &:hover {
-        color: #78736f;
         /* background-color: rgba(214, 188, 63, 0.2); */
         border-right: 15px solid rgba(214, 188, 63, 0.2);
     }
@@ -45,7 +44,6 @@ const WebBgStyled = styled.span`
     padding: 3px 0;
     border-bottom: 1px solid transparent;
     &:hover {
-        color: #78736f;
         /* background-color: rgba(214, 188, 63, 0.2); */
         border-bottom: 1px solid #97c9bd;
     }

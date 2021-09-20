@@ -28,14 +28,23 @@ nav ul {
     flex-direction: column;
 }
 nav ul li {
-    @apply mx-1;
+    @apply mx-1 my-2 md:my-0;
 }
 
 nav a {
-    @apply text-gray-dark pt-1 pr-0 mx-3 text-lg border-b border-salmon;
+    /* transition: background-color .3s ease-in-out; */
+    border-bottom: 1px solid transparent;
+    @apply block text-gray-dark pr-0 mx-3 text-xl md:text-lg;
 }
 nav a:hover {
-    @apply bg-gray-lighter;
+    /* background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 3px,
+        #f98b7e 3px,
+        #f98b7e 6px
+); */
+    @apply border-b border-gray-light text-teal;
 }
 nav a:last-child {
     @apply mr-0;
