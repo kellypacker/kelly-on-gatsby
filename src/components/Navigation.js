@@ -94,7 +94,7 @@ const Navigation = ({}) => {
                 <Link
                     to="/"
                     className="text-3xl ml-1"
-                    style={{ lineHeight: 1.2 }}
+                    style={{ lineHeight: 1.2, zIndex: 11 }}
                 >
                     Kelly Packer
                 </Link>

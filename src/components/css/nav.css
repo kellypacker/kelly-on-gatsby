@@ -1,6 +1,9 @@
+.main-nav-mobile  {
+    z-index: 11;
+}
 .main-nav-mobile button {
     position: absolute;
-    top: 23px;
+    top: 20px;
     right: 5px;
 }
 .main-nav-mobile__artwork {
@@ -14,11 +17,11 @@ nav {
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 50;
+    z-index: 10;
     background-color: #fff;
 }
 nav ul {
