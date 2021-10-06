@@ -25,6 +25,14 @@ module.exports = {
         'gatsby-plugin-sharp',
         'gatsby-plugin-sitemap',
         'gatsby-transformer-sharp',
+        {
+
+            resolve: 'gatsby-plugin-htaccess',
+            options: {
+                https: true,
+                www: true
+            }
+        },
         // `gatsby-plugin-sass`,
         {
             resolve: 'gatsby-source-filesystem',
