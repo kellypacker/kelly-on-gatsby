@@ -26,11 +26,11 @@ module.exports = {
         'gatsby-plugin-sitemap',
         'gatsby-transformer-sharp',
         {
-
             resolve: 'gatsby-plugin-htaccess',
             options: {
                 https: true,
-                www: true
+                www: true,
+                host: 'www.kellypacker.com'
             }
         },
         // `gatsby-plugin-sass`,
