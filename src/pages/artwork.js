@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { mediaQueries } from '../helpers/media-queries';
 import SEO from '../components/SEO';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const ArtworkContainerStyled = styled.div`
     display: grid;
@@ -27,21 +28,18 @@ const ImgContainer = styled.div`
 `;
 
 const ArtGroup = ({ artGroup }) => {
+    const image = getImage(artGroup.image);
     return (
         <ArtworkContainerStyled className="py-8">
             <div>
                 <Link to={`/artwork/series/${artGroup.slug}`}>
                     <ImgContainer>
-                        <Img
-                            className="artgroup-img"
-                            fluid={artGroup.image.fluid}
-                            alt={artGroup.title}
-                        />
+                        <GatsbyImage className="artgroup-img" image={image} alt={`${artGroup.image.title}`} />      
                     </ImgContainer>
                 </Link>
             </div>
             <div className="">
-                <h2 className="text-salmon font-serif text-2xl font-bold pb-2">
+                <h2 className="pb-2 font-serif text-2xl font-bold text-salmon">
                     <Link to={`/artwork/series/${artGroup.slug}`}>
                         {artGroup.title}
                     </Link>
@@ -52,7 +50,7 @@ const ArtGroup = ({ artGroup }) => {
                     )}
                 {artGroup.artistStatement && (
                     <>
-                        <h3 className="uppercase text-lg pt-3 font-bold pb-2">
+                        <h3 className="pt-3 pb-2 text-lg font-bold uppercase">
                             Statement
                         </h3>
                         {documentToReactComponents(
@@ -75,7 +73,7 @@ const ArtworkPage = ({ data }) => {
                 title="Artwork by Series"
                 description="Artwork by listed by series. Includes artist statements and images."
             />
-            <h1 className="text-3xl mt-4 uppercase">
+            <h1 className="mt-4 text-3xl uppercase">
                 Artwork <span className="italic lowercase">by</span> Series
             </h1>
 
@@ -102,9 +100,13 @@ export const query = graphql`
                 title
                 id
                 image {
-                    fluid(maxWidth: 300, quality: 80) {
-                        ...GatsbyContentfulFluid
-                    }
+                    title
+                    gatsbyImageData(
+                        width: 300
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                        quality: 80
+                    )
                 }
             }
         }

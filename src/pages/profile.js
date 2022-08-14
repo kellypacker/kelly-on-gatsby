@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
@@ -24,22 +24,20 @@ const ImgContainer = styled.div`
 
 const ContactPage = ({ data }) => {
     const { about } = data;
+    const image = getImage(about.profileImage);
     return (
         <>
             <SEO
                 title="Profile"
                 description="Profile of Kelly Packer, artist and web developer. Includes artist statement and background."
             />
-            <h1 className="text-3xl mt-4 mb-2">
+            <h1 className="mt-4 mb-2 text-3xl">
                 Artist <em>and</em> Web Developer
             </h1>
             <ProfileStyled className="pb-6">
                 <div>
                     <ImgContainer>
-                        <Img
-                            fluid={about.profileImage.fluid}
-                            alt="Kelly Packer"
-                        />
+                        <GatsbyImage image={image} alt={about.profileImage.title} />      
                     </ImgContainer>
                 </div>
                 <div className="cms-content cms-content--profile">
@@ -62,9 +60,12 @@ export const query = graphql`
                 raw
             }
             profileImage {
-                fluid(maxWidth: 300, quality: 75) {
-                    ...GatsbyContentfulFluid
-                }
+                gatsbyImageData(
+                    width: 300
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    quality: 80
+                )
             }
         }
     }

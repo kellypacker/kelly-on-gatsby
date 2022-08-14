@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
@@ -37,6 +37,7 @@ const Artwork = ({ data }) => {
 
     const prevArtwork = artworks[currentIndex - 1];
     const nextArtwork = artworks[currentIndex + 1];
+    const image = getImage(artwork.image);
 
     return (
         <>
@@ -45,27 +46,27 @@ const Artwork = ({ data }) => {
                 description={`Artwork: ${artwork.title} ${artwork.medium.name} ${artwork.year}`}
             />
             <HeaderStyles
-                className="flex justify-between items-baseline flex-col md:flex-row mb-4"
+                className="flex flex-col items-baseline justify-between mb-4 md:flex-row"
                 style={{ flexFlow: 'row wrap' }}
             >
-                <h2 className="text-xl md:text-3xl mt-4 mb-5 text-center md:text-left">
-                    <span className="uppercase text-sm md:text-lg">
+                <h2 className="mt-4 mb-5 text-xl text-center md:text-3xl md:text-left">
+                    <span className="text-sm uppercase md:text-lg">
                         Series:
                     </span>{' '}
                     {artwork.artGroup.title}
                 </h2>
-                <div className="pagination text-center md:text-right">
+                <div className="text-center pagination md:text-right">
                     <Link
                         title="Prev Page"
                         disabled={!prevArtwork}
-                        className="text-md md:text-lg border border-gray-md py-1 pr-2 pl-1 mr-3"
+                        className="py-1 pl-1 pr-2 mr-3 border text-md md:text-lg border-gray-md"
                         to={prevArtwork ? `/artwork/${prevArtwork.slug}` : ''}
                     >
                         
-                        <ChevronLeftIcon className="h-4 w-4 inline"/> Prev
+                        <ChevronLeftIcon className="inline w-4 h-4"/> Prev
                     </Link>
                     <Link
-                        className="text-md md:text-lg border border-gray-md py-1 px-2"
+                        className="px-2 py-1 border text-md md:text-lg border-gray-md"
                         to={`/artwork/series/${artwork.artGroup.slug}`}
                     >
                         - All Artwork in Series -
@@ -73,25 +74,21 @@ const Artwork = ({ data }) => {
                     <Link
                         title="Next Page"
                         disabled={!nextArtwork}
-                        className="text-md md:text-lg border border-gray-md py-1 pl-2 pr-1 ml-3"
+                        className="py-1 pl-2 pr-1 ml-3 border text-md md:text-lg border-gray-md"
                         to={nextArtwork ? `/artwork/${nextArtwork.slug}` : ''}
                     >
-                        Next <ChevronRightIcon className="h-4 w-4 inline"/>
+                        Next <ChevronRightIcon className="inline w-4 h-4"/>
                     </Link>
                 </div>
             </HeaderStyles>
 
-            <div className="flex flex-col md:flex-row pb-8">
+            <div className="flex flex-col pb-8 md:flex-row">
                 <div className="w-full md:w-2/3">
-                    <Img
-                        className="artgroup-img"
-                        fluid={artwork.image.fluid}
-                        alt={artwork.title}
-                    />
+                    <GatsbyImage className="artgroup-img" image={image} alt={artwork.image.title} />      
                 </div>
 
-                <div className="w-full md:w-1/3 pl-0 md:pl-6 text-center md:text-left">
-                    <h1 className="text-xl mb-2 pt-3 md:pt-0">
+                <div className="w-full pl-0 text-center md:w-1/3 md:pl-6 md:text-left">
+                    <h1 className="pt-3 mb-2 text-xl md:pt-0">
                         {artwork.title}
                     </h1>
                     {artwork.longTitle &&
@@ -151,9 +148,12 @@ export const query = graphql`
             }
             year
             image {
-                fluid(maxWidth: 900, quality: 75) {
-                    ...GatsbyContentfulFluid
-                }
+                gatsbyImageData(
+                    width: 1800
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    quality: 80
+                )
             }
             # framed
             available

@@ -19,7 +19,6 @@ module.exports = {
         `gatsby-plugin-fontawesome-css`,
         `gatsby-plugin-postcss`,
         'gatsby-plugin-styled-components',
-        'gatsby-plugin-sharp',
         'gatsby-plugin-react-helmet',
         'gatsby-plugin-image',
         'gatsby-plugin-sharp',

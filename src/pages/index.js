@@ -1,12 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Img from 'gatsby-image';
-
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
-// import { GatsbyImage } from 'gatsby-plugin-image/compat';
 
 const ContainerStyled = styled.div`
     display: grid;
@@ -17,21 +14,25 @@ const ContainerStyled = styled.div`
 const IndexPage = ({ data }) => {
     const posts = data.posts.nodes;
     if (!posts) return null;
-
+    
     return (
         <ContainerStyled>
             <SEO title="Home" />
-            {posts.map((post) => (
-                <div className="pt-4 pb-8" key={post.id}>
-                    <h2 className="mb-2 mt-4 text-3xl leading-8">
-                        {post.title}
-                    </h2>
-                    <ReactMarkdown className="mb-4">
-                        {post.description.internal.content}
-                    </ReactMarkdown>
-                    <Img fluid={post.image.fluid} alt="Test" />
-                </div>
-            ))}
+            {posts.map((post) => {
+            console.log({post});
+                const image = getImage(post.image);
+                return (
+                    <div className="pt-4 pb-8" key={post.id}>
+                        <h2 className="mt-4 mb-2 text-3xl leading-8">
+                            {post.title}
+                        </h2>
+                        <ReactMarkdown className="mb-4">
+                            {post.description.internal.content}
+                        </ReactMarkdown>
+                        <GatsbyImage image={image} alt={post.image.title} />      
+                    </div>
+                );
+            })}
         </ContainerStyled>
     );
 };
@@ -48,9 +49,13 @@ export const query = graphql`
                     }
                 }
                 image {
-                    fluid(maxWidth: 600, quality: 90) {
-                        ...GatsbyContentfulFluid
-                    }
+                    title
+                    gatsbyImageData(
+                        width: 600
+                        placeholder: BLURRED
+                        formats: [AUTO, WEBP, AVIF]
+                        quality: 80
+                    )
                 }
             }
         }

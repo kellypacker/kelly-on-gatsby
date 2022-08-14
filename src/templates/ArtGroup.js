@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
 
@@ -25,24 +25,24 @@ const ArtGroup = ({ data }) => {
                 title={`Series: ${artGroup.title}`}
                 description={`Artwork for the series: ${artGroup.title}`}
             />
-            <h1 className="text-3xl mt-4 mb-2">
-                <span className="uppercase text-lg font-normal">Series:</span>{' '}
+            <h1 className="mt-4 mb-2 text-3xl">
+                <span className="text-lg font-normal uppercase">Series:</span>{' '}
                 {artGroup.title}
             </h1>
             <ContainerStyled className="pt-3">
-                {artworks.map((artwork) => (
-                    <div key={artwork.id}>
-                        <Link to={`/artwork/${artwork.slug}`}>
-                            <Img
-                                fluid={artwork.image.fluid}
-                                alt={artwork.title}
-                            />
-                            <h3 className="text-center text-lg py-2">
-                                {artwork.title}
-                            </h3>
-                        </Link>
-                    </div>
-                ))}
+                {artworks.map((artwork) => {
+                    const image = getImage(artwork.image);
+                    return (
+                        <div key={artwork.id}>
+                            <Link to={`/artwork/${artwork.slug}`}>
+                                <GatsbyImage image={image} alt={`Thumbnail: ${artwork.image.title}`} />      
+                                <h3 className="py-2 text-lg text-center">
+                                    {artwork.title}
+                                </h3>
+                            </Link>
+                        </div>
+                    );
+                })}
             </ContainerStyled>
         </>
     );
@@ -69,9 +69,13 @@ export const query = graphql`
                     slug
                     title
                     image {
-                        fluid(maxWidth: 300, quality: 80) {
-                            ...GatsbyContentfulFluid
-                        }
+                        title
+                        gatsbyImageData(
+                            width: 800
+                            placeholder: BLURRED
+                            formats: [AUTO, WEBP, AVIF]
+                            quality: 80
+                        )
                     }
                 }
             }
