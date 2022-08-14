@@ -11,7 +11,7 @@ const ContactPage = () => {
                 description="Contact Kelly Packer regarding general inquires, web development and artwork."
             />
             <div className="max-w-lg">
-                <h1 className="text-3xl mt-4 mb-2">
+                <h1 className="mt-4 mb-2 text-3xl">
                     Start <em>a</em> Conversation
                 </h1>
                 <p className="text-2xl">I would love to hear from you.</p>

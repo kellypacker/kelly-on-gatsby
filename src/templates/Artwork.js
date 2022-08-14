@@ -62,8 +62,7 @@ const Artwork = ({ data }) => {
                         className="py-1 pl-1 pr-2 mr-3 border text-md md:text-lg border-gray-md"
                         to={prevArtwork ? `/artwork/${prevArtwork.slug}` : ''}
                     >
-                        
-                        <ChevronLeftIcon className="inline w-4 h-4"/> Prev
+                        <ChevronLeftIcon className="inline w-4 h-4" /> Prev
                     </Link>
                     <Link
                         className="px-2 py-1 border text-md md:text-lg border-gray-md"
@@ -77,14 +76,18 @@ const Artwork = ({ data }) => {
                         className="py-1 pl-2 pr-1 ml-3 border text-md md:text-lg border-gray-md"
                         to={nextArtwork ? `/artwork/${nextArtwork.slug}` : ''}
                     >
-                        Next <ChevronRightIcon className="inline w-4 h-4"/>
+                        Next <ChevronRightIcon className="inline w-4 h-4" />
                     </Link>
                 </div>
             </HeaderStyles>
 
             <div className="flex flex-col pb-8 md:flex-row">
                 <div className="w-full md:w-2/3">
-                    <GatsbyImage className="artgroup-img" image={image} alt={artwork.image.title} />      
+                    <GatsbyImage
+                        className="artgroup-img"
+                        image={image}
+                        alt={artwork.image.title}
+                    />
                 </div>
 
                 <div className="w-full pl-0 text-center md:w-1/3 md:pl-6 md:text-left">
@@ -123,7 +126,7 @@ const Artwork = ({ data }) => {
 export default Artwork;
 
 export const query = graphql`
-    query($slug: String!, $artGroupSlug: String!) {
+    query ($slug: String!, $artGroupSlug: String!) {
         artworks: allContentfulArtworkOrder(
             filter: { artGroup: { slug: { eq: $artGroupSlug } } }
         ) {

@@ -14,12 +14,11 @@ const ContainerStyled = styled.div`
 const IndexPage = ({ data }) => {
     const posts = data.posts.nodes;
     if (!posts) return null;
-    
+
     return (
         <ContainerStyled>
             <SEO title="Home" />
             {posts.map((post) => {
-            console.log({post});
                 const image = getImage(post.image);
                 return (
                     <div className="pt-4 pb-8" key={post.id}>
@@ -29,7 +28,7 @@ const IndexPage = ({ data }) => {
                         <ReactMarkdown className="mb-4">
                             {post.description.internal.content}
                         </ReactMarkdown>
-                        <GatsbyImage image={image} alt={post.image.title} />      
+                        <GatsbyImage image={image} alt={post.image.title} />
                     </div>
                 );
             })}

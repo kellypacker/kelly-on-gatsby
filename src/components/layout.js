@@ -8,7 +8,7 @@ import Footer from './Footer';
 
 export default function Layout({ children }) {
     return (
-        <div className="container mx-auto px-3">
+        <div className="container px-3 mx-auto">
             <Navigation />
             {children}
             <Footer />

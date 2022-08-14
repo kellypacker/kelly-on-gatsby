@@ -34,7 +34,11 @@ const ArtGroup = ({ artGroup }) => {
             <div>
                 <Link to={`/artwork/series/${artGroup.slug}`}>
                     <ImgContainer>
-                        <GatsbyImage className="artgroup-img" image={image} alt={`${artGroup.image.title}`} />      
+                        <GatsbyImage
+                            className="artgroup-img"
+                            image={image}
+                            alt={`${artGroup.image.title}`}
+                        />
                     </ImgContainer>
                 </Link>
             </div>

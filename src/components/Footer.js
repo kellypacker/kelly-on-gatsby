@@ -12,7 +12,7 @@ import {
 const Footer = () => {
     const currentYear = new Date().getFullYear();
     return (
-        <footer className="flex flex-col md:flex-row md:justify-between items-baseline border-t border-gray-md py-3">
+        <footer className="flex flex-col items-baseline py-3 border-t md:flex-row md:justify-between border-gray-md">
             <ul className="flex items-start">
                 <li>
                     <a

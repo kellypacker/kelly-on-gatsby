@@ -35,7 +35,10 @@ const ArtGroup = ({ data }) => {
                     return (
                         <div key={artwork.id}>
                             <Link to={`/artwork/${artwork.slug}`}>
-                                <GatsbyImage image={image} alt={`Thumbnail: ${artwork.image.title}`} />      
+                                <GatsbyImage
+                                    image={image}
+                                    alt={`Thumbnail: ${artwork.image.title}`}
+                                />
                                 <h3 className="py-2 text-lg text-center">
                                     {artwork.title}
                                 </h3>
@@ -55,7 +58,7 @@ const ArtGroup = ({ data }) => {
 export default ArtGroup;
 
 export const query = graphql`
-    query($slug: String!) {
+    query ($slug: String!) {
         artGroup: contentfulArtGroups(slug: { eq: $slug }) {
             title
             slug

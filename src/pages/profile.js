@@ -11,9 +11,8 @@ const ProfileStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 600px));
     grid-gap: 2rem 2rem;
-    @media ${mediaQueries.md} { 
+    @media ${mediaQueries.md} {
         grid-template-columns: 300px minmax(auto, 700px);
-
     }
 `;
 
@@ -37,7 +36,10 @@ const ContactPage = ({ data }) => {
             <ProfileStyled className="pb-6">
                 <div>
                     <ImgContainer>
-                        <GatsbyImage image={image} alt={about.profileImage.title} />      
+                        <GatsbyImage
+                            image={image}
+                            alt={about.profileImage.title}
+                        />
                     </ImgContainer>
                 </div>
                 <div className="cms-content cms-content--profile">

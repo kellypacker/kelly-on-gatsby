@@ -62,12 +62,13 @@ const Navigation = ({}) => {
 
     const handleMobileNavToggle = () => {
         const isDesktop = window.innerWidth > 768;
-        document.body.style.overflow = isMobileNavOpen || isDesktop ? 'auto' : 'hidden';
+        document.body.style.overflow =
+            isMobileNavOpen || isDesktop ? 'auto' : 'hidden';
         setIsMobileNavOpen(!isMobileNavOpen);
     };
     return (
         <>
-            <div className="block relative main-nav-mobile md:hidden">
+            <div className="relative block main-nav-mobile md:hidden">
                 <Link className="main-nav-mobile__artwork" to="/artwork">
                     <ArtworkBgStyled>Artwork</ArtworkBgStyled>
                 </Link>
@@ -90,10 +91,10 @@ const Navigation = ({}) => {
                     </button>
                 )}
             </div>
-            <div className="main-header flex justify-between items-center border-b border-gray-md pb-2 pt-4">
+            <div className="flex items-center justify-between pt-4 pb-2 border-b main-header border-gray-md">
                 <Link
                     to="/"
-                    className="text-3xl ml-1"
+                    className="ml-1 text-3xl"
                     style={{ lineHeight: 1.2, zIndex: 11 }}
                 >
                     Kelly Packer
