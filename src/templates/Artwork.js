@@ -39,8 +39,6 @@ const Artwork = ({ data }) => {
     const nextArtwork = artworks[currentIndex + 1];
     const image = getImage(artwork.image);
 
-    console.log({ artwork });
-
     return (
         <>
             <SEO
