@@ -116,8 +116,15 @@ const Navigation = ({}) => {
                                 </Link>
                             </li>
                             <li>
-                                <a href="https://www.etsy.com/shop/kellypacker/">
+                                <a href="https://shop.kellypacker.com">
                                     <ArtworkBgStyled>Store</ArtworkBgStyled>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.etsy.com/shop/kellypacker/">
+                                    <ArtworkBgStyled>
+                                        Etsy Store
+                                    </ArtworkBgStyled>
                                 </a>
                             </li>
                             <li>
