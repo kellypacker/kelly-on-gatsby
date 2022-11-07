@@ -39,6 +39,8 @@ const Artwork = ({ data }) => {
     const nextArtwork = artworks[currentIndex + 1];
     const image = getImage(artwork.image);
 
+    console.log({ artwork });
+
     return (
         <>
             <SEO
@@ -104,6 +106,11 @@ const Artwork = ({ data }) => {
                     <p className="pb-0">{artwork.medium.name}</p>
                     <p className="pb-0">{artwork.year}</p>
                     {artwork.available && artwork.price && `$${artwork.price}`}
+                    {artwork.available && artwork.linkToBuy && (
+                        <div className="mt-2">
+                            <a href={artwork.linkToBuy}>Available in my shop</a>
+                        </div>
+                    )}
                     {artwork.available && (
                         <div>
                             <a
@@ -159,6 +166,7 @@ export const query = graphql`
                 )
             }
             # framed
+            linkToBuy
             available
             price
             artGroup {
