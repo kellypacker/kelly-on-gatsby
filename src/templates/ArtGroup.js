@@ -33,7 +33,12 @@ const ArtGroup = ({ data }) => {
                 {artworks.map((artwork) => {
                     const image = getImage(artwork.image);
                     return (
-                        <div key={artwork.id}>
+                        <div key={artwork.id} className="relative">
+                            {artwork.available && (
+                                <div className="absolute top-0 right-0 z-10 px-2 py-1 text-gray-lighter bg-salmon">
+                                    Available
+                                </div>
+                            )}
                             <Link to={`/artwork/${artwork.slug}`}>
                                 <GatsbyImage
                                     image={image}
@@ -80,6 +85,7 @@ export const query = graphql`
                             quality: 80
                         )
                     }
+                    available
                 }
             }
         }
