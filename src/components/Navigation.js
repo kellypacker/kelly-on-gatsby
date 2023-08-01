@@ -57,7 +57,7 @@ const StoreBgStyled = styled.span`
     }
 `;
 
-const Navigation = ({}) => {
+const Navigation = ({ }) => {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
     const handleMobileNavToggle = () => {
@@ -101,9 +101,8 @@ const Navigation = ({}) => {
                 </Link>
 
                 <div
-                    className={`${
-                        isMobileNavOpen ? 'block' : 'hidden'
-                    } md:block`}
+                    className={`${isMobileNavOpen ? 'block' : 'hidden'
+                        } md:block`}
                 >
                     <NavStyled>
                         <ul>
@@ -115,11 +114,11 @@ const Navigation = ({}) => {
                                     <ArtworkBgStyled>Artwork</ArtworkBgStyled>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <a href="https://shop.kellypacker.com">
                                     <ArtworkBgStyled>Store</ArtworkBgStyled>
                                 </a>
-                            </li>
+                            </li> */}
                             <li>
                                 <a href="https://www.etsy.com/shop/kellypacker/">
                                     <ArtworkBgStyled>
