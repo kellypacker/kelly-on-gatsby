@@ -41,11 +41,5 @@ module.exports = {
             },
             __key: 'images',
         },
-        {
-            resolve: 'gatsby-plugin-load-script',
-            options: {
-                src: '/appstream_embed.js',
-            },
-        },
     ],
 };
