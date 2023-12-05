@@ -93,7 +93,7 @@ const Artwork = ({ data }) => {
 
                 <div className="w-full pl-0 text-center md:w-1/3 md:pl-6 md:text-left">
                     {!artwork.longTitle?.raw && artwork.title && (
-                        <h1 className="pt-3 mb-2 text-xl md:pt-0">
+                        <h1 className="pt-3 mb-2 text-lg md:pt-0">
                             {artwork.title}
                         </h1>
                     )}
