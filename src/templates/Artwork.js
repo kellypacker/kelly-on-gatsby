@@ -8,6 +8,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { mediaQueries } from '../helpers/media-queries';
 import SEO from '../components/SEO';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const HeaderStyles = styled.div`
     flex-flow: row wrap;
@@ -91,13 +92,20 @@ const Artwork = ({ data }) => {
                 </div>
 
                 <div className="w-full pl-0 text-center md:w-1/3 md:pl-6 md:text-left">
-                    <h1 className="pt-3 mb-2 text-xl md:pt-0">
-                        {artwork.title}
-                    </h1>
-                    {artwork.longTitle &&
+                    {!artwork.longTitle?.raw && artwork.title && (
+                        <h1 className="pt-3 mb-2 text-xl md:pt-0">
+                            {artwork.title}
+                        </h1>
+                    )}
+                    {artwork.longTitle?.raw && (
+                        <div>
+                            <div className="artwork-long-title" dangerouslySetInnerHTML={{ __html: documentToHtmlString(JSON.parse(artwork.longTitle.raw)) }}></div>
+                        </div>
+                    )}
+                    {/* {artwork.longTitle &&
                         documentToReactComponents(
                             JSON.parse(artwork.longTitle.raw)
-                        )}
+                        )} */}
                     <p className="pb-0">
                         {artwork.height}" x {artwork.width}"
                     </p>
