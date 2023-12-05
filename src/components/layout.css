@@ -2,7 +2,7 @@
 @tailwind components;
 
 .cms-content--profile p:first-child {
-    @apply text-2xl relative pb-6;
+    @apply relative pb-6 text-2xl;
 }
 
 .cms-content--profile p:first-child:after {
@@ -12,11 +12,11 @@
     left: 0;
     z-index: 10;
     border-bottom: 3px dotted #97c9bd;
-    width: 75%
+    width: 75%;
 }
 
 .cms-content h3 {
-    @apply text-2xl pt-4 pb-3;
+    @apply pt-4 pb-3 text-2xl;
 }
 
 footer a {
@@ -40,30 +40,31 @@ footer a {
         @apply text-teal;
     }
     p {
-        @apply text-lg leading-p pb-2;
+        @apply pb-2 text-lg leading-p;
     }
-    input, textarea {
-        @apply block border border-gray-md w-full mb-4 p-2 mt-1;
+    input,
+    textarea {
+        @apply block w-full p-2 mt-1 mb-4 border border-gray-md;
     }
     label {
-        @apply uppercase font-bold text-base;
+        @apply text-base font-bold uppercase;
     }
-    button[type="submit"] {
-        @apply border-salmon pl-4 pr-6 py-2 uppercase border-b relative bg-gray-lighter;
+    button[type='submit'] {
+        @apply relative py-2 pl-4 pr-6 uppercase border-b border-salmon bg-gray-lighter;
     }
-    button[type="submit"]:hover {
+    button[type='submit']:hover {
         @apply bg-gray-light;
     }
-    button[type="submit"]:after {
-            content: ' ';
-            position: absolute;
-            bottom: 0px;
-            left: 0;
-            z-index: 10;
-            border-bottom: 3px dotted #97c9bd;
-            width: 75%
+    button[type='submit']:after {
+        content: ' ';
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        z-index: 10;
+        border-bottom: 3px dotted #97c9bd;
+        width: 75%;
     }
-    form { 
+    form {
         @apply relative pt-6;
     }
     form:before {
@@ -73,7 +74,16 @@ footer a {
         left: 0;
         z-index: 10;
         border-top: 3px dotted #97c9bd;
-        width: 75%
+        width: 75%;
     }
 
+    .artwork-long-title {
+        @apply mb-4;
+    }
+    .artwork-long-title p {
+        @apply pb-1;
+    }
+    .artwork-long-title p:empty {
+        @apply pb-3;
+    }
 }
